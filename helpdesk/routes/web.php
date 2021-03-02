@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/greeting', function(){
-    return '<h1>Hello World</h1>';
-});
+
+// Route::get('/greeting', function(){ //   /greeting in the url
+//     return '<h1>Hello World</h1>';
+// });
+
+// Route::redirect('/here','/there');
+// shortcut for the url 
+
+// Route::permanenRedirect('/here','/there');
+// returns automaticllay an 301 statuscode
+
+Route::view('/dit/is/een/test','test/opdracht3b',['name'=>'masklj']);
+
+
+
+
+
