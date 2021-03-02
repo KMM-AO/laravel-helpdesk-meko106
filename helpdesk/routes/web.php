@@ -24,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 // Route::permanenRedirect('/here','/there');
 // returns automaticllay an 301 statuscode
 
-Route::view('/dit/is/een/test','test/opdracht3b',['name'=>'masklj']);
+Route::view('/dit/is/een/test','test/opdracht3b');
+
+Route::redirect('/dit/is/nog/een/test', '/dit/is/een/test');
 
 
 
