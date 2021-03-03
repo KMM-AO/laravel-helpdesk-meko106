@@ -32,4 +32,19 @@ Route::get('/test/parameter/{id}', function($id){
     return view('test/opdracht3d')->with('param', $id);
 });
 
+Route::get('/test/integer/{id}', function($id){
+    return view('test/opdracht3d')->with('param', $id);
+});
 
+
+//name is the param which you give with the request uri
+Route::get('/user/{name?}', function($name = 'dfdfd'){
+    return $name;
+});
+
+
+
+// 3e
+Route::get('/user/integer/{id}', function($id){
+    return $id;
+})->where('id','[0-9]*');
