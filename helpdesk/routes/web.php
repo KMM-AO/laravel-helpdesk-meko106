@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,22 +16,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 // Route::get('/greeting', function(){ //   /greeting in the url
 //     return '<h1>Hello World</h1>';
 // });
-
 // Route::redirect('/here','/there');
 // shortcut for the url 
-
 // Route::permanenRedirect('/here','/there');
 // returns automaticllay an 301 statuscode
 
+
 Route::view('/dit/is/een/test','test/opdracht3b');
-
 Route::redirect('/dit/is/nog/een/test', '/dit/is/een/test');
-
 Route::get('/test/parameter/{id}', function($id){
     return view('test/opdracht3d')->with('param', $id);
 });
@@ -43,8 +42,13 @@ Route::get('/user/{name?}', function($name = 'dfdfd'){
 });
 
 
-
 // 3e
 Route::get('/user/integer/{id}', function($id){
     return $id;
 })->where('id','[0-9]*');
+
+
+
+
+Route::get('/dit/is/een/test/via/de/controller', [TestController::class, ('show3b')]);
+Route::get('/test/parameter/{id}/via/de/controller', [TestController::class, ('show3d')]);
