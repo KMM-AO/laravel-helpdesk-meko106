@@ -9,7 +9,6 @@ class Role extends Model
 {
     use HasFactory;
 
-
     const BOSS=11;
     const EMPLOYEE=21;
     const APPLICANT=31;
