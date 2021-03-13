@@ -14,12 +14,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // Role::createMany([
-        //     ['id'=>Role::BOSS, 'name'=>'baas'],
-        //     ['id'=>Role::EMPLOYEE, 'name'=>'medewerker'],
-        //     ['id'=>Role::APPLICANT, 'name'=>'sollicitant'],
-        //     ['id'=>Role::CUSTOMER, 'name'=>'klant']
-        // ]);
         Role::factory()->createMany([ 
             ['id'=>Role::BOSS, 'name'=>"baas"], 
             ['id'=>Role::EMPLOYEE, 'name'=>"medewerker"],
