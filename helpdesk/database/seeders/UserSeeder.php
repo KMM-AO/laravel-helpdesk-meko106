@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         User::create([
             'name'=>'Meko',
             'email'=>'baas@helpdesk.nl',
-            'email_verified_at'=> now(),
+            'email_verified_at'=>now(),
             'password'=>Hash::make('Laravel2012'),
             'role_id'=>Role::BOSS
         ]);
