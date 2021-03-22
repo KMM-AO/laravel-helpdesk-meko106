@@ -7,9 +7,6 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
-
-
-
 class UserSeeder extends Seeder
 {
     /**
@@ -24,7 +21,7 @@ class UserSeeder extends Seeder
             'email'=>'baas@helpdesk.nl',
             'email_verified_at'=>now(),
             'password'=>Hash::make('Laravel2012'),
-            // 'role_id'=>Role::BOSS
+            'role_id'=>Role::BOSS
         ]);
     }
 }
