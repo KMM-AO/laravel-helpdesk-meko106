@@ -15,7 +15,7 @@
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
-
+            
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
@@ -68,4 +68,9 @@
             </div>
         </form>
     </x-auth-card>
+
+    <script>
+    var app=@json($array);
+    </script>
 </x-guest-layout>
+

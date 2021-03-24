@@ -45,13 +45,11 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $request->has('apply') ? Role::APPLICANT : Role::CUSTOMER 
-
         ]));
-
-
+        
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
-    
+        
     }
 }
