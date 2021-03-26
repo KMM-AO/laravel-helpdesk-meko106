@@ -68,9 +68,5 @@
             </div>
         </form>
     </x-auth-card>
-
-    <script>
-    var app=@json($array);
-    </script>
 </x-guest-layout>
 
