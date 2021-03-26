@@ -40,11 +40,10 @@
 
 <style>
 
-.title:hover {
+.title {
     color: #1a202c;
     font-size: 1.25rem;
     line-height: 1.25;
-    color:blue;
     }
 
 
