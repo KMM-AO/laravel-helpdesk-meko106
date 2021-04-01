@@ -7,7 +7,7 @@ use App\Models\Role;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class ApplicantPolicy
 {
     use HandlesAuthorization;
 

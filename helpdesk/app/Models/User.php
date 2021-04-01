@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use App\Models\Role;
+use App\Models\Applicant;
 
 
 class User extends Authenticatable
@@ -21,6 +22,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $primaryKey='id';
+
     protected $hidden = 
     [
         'password',
@@ -40,5 +44,11 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo(Role::class, 'role_id', 'id');
+    } 
+
+    public function applicant(){
+        return $this->belongsTo(Applicant::class, 'user_id', 'id');
     }
+
+
 }

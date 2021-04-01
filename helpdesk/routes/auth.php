@@ -67,4 +67,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 
 Route::get('/applicants', [ApplicantController::class, 'index'])
             ->name('applicants')
-            ->middleware('can:list, App\Models\User');
+            ->middleware('can:list, App\Models\Applicant');
+

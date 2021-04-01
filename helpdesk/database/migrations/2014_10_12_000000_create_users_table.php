@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->foreignId('role_id')->constrained()
             ->onUpdate('cascade')
-            ->onDelete('restrict');;
+            ->onDelete('restrict');
         });
     }
 

@@ -23,8 +23,8 @@
                     <br>
                     @foreach($applicants as $applicant)
                     <tr>
-                    <td>{{ $applicant->name }}</td>
-                    <td>{{ $applicant->email }}</td>
+                    <td>{{ $applicant->user->name }}</td>
+                    <td>{{ $applicant->user->email }}</td>
                     <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
                     </tr>
                     <br>
