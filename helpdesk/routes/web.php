@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApplicantController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/applicants', [ApplicantController::class, 'index'])
+            ->name('applicants')
+            ->middleware('can:list, App\Models\Applicant');
