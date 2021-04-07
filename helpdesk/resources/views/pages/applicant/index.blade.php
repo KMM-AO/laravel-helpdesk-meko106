@@ -31,7 +31,7 @@
 
                     @endforeach
                     @endif
-
+                    
                 </div>
             </div>
         </div>
@@ -46,5 +46,5 @@
     line-height: 1.25;
     }
 
-
+    
 </style>

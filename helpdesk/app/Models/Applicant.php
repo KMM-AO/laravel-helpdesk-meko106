@@ -12,6 +12,10 @@ class Applicant extends Model
 
     protected $primaryKey='user_id' ;
     
+    protected $casts=[
+        'queued' => 'boolean'
+    ];
+    
 
     public function user(){
         return $this->hasOne(User::class,'id', 'user_id');
