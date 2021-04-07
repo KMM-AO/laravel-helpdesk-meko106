@@ -47,7 +47,7 @@ class User extends Authenticatable
     } 
 
     public function applicant(){
-        return $this->belongsTo(Applicant::class, 'user_id', 'id');
+        return $this->hasOne(Applicant::class);
     }
 
 
