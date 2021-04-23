@@ -24,7 +24,11 @@
                     @foreach($applicants as $applicant)
                     <tr>
                     <td>{{ $applicant->user->name }}</td>
+                    
+                    <x-link :href="('mailto:' . $applicant->user->mail)">
                     <td>{{ $applicant->user->email }}</td>
+                    </x-link>
+
                     <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
                     </tr>
                     <br>
