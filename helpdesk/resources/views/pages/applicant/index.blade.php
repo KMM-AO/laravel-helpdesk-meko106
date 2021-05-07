@@ -25,9 +25,12 @@
                     <tr>
                     <td>{{ $applicant->user->name }}</td>
                     
-                    <x-link :href="('mailto:' . $applicant->user->mail)">
-                    <td>{{ $applicant->user->email }}</td>
+                    <td>
+                    <x-link :href="('mailto:' . $applicant->user->email)">
+                    {{ $applicant->user->email }}
                     </x-link>
+                    </td>
+
 
                     <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
                     </tr>
