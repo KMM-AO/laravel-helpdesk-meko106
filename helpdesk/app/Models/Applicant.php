@@ -12,6 +12,9 @@ class Applicant extends Model
 
     protected $primaryKey='user_id' ;
 
+
+    protected $fillable=['queued', 'user_id'];
+
     protected $casts=[
         'queued' => 'boolean'
     ];

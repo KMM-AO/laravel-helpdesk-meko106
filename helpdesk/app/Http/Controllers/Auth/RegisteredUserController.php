@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Applicant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+
+
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -47,6 +50,17 @@ class RegisteredUserController extends Controller
             'role_id' => $request->has('apply') ? Role::APPLICANT : Role::CUSTOMER 
         ]));
         
+
+        if($request->has('apply')){
+            Applicant::create([
+                'queued' => false,
+                'user_id' => $user->id,
+            ]);
+        }
+
+
+        dd($user);
+
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
