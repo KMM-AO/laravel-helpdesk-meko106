@@ -17,4 +17,10 @@ class ApplicantController extends Controller
         
         return view('pages.applicant.index')->with('applicants', $applicants) ;       
     }
+
+
+
+    public function employ(Applicant $applicant){
+        dd($applicant);
+    }
 }

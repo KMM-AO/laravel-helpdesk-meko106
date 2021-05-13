@@ -58,9 +58,7 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-
-        dd($user);
-
+        
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);

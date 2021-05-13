@@ -19,7 +19,7 @@
 
                 @can('list', App\Models\Applicant::class)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link class="dashboardItems" :href="route('applicants')" :active="request()->routeIs('applicants')">
+                    <x-nav-link class="dashboardItems" :href="route('applicant.index')" :active="request()->routeIs('applicant.index')">
                         {{ __('Applicants') }}
                     </x-nav-link>
                 </div>
