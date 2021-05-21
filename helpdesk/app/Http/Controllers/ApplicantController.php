@@ -25,11 +25,13 @@ class ApplicantController extends Controller
     public function employ(Applicant $applicant){
         $applicant->user->role_id = Role::EMPLOYEE;
         $applicant->user->save();
-
-        return redirect('applicant/index')->with('status', $applicant->user->name.' is hired');
-
-
+        return back()->with('status', $applicant->user->name.' is hired');
     }
+
+
+
+
+
 
 }
 
