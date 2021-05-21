@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Applicant;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
+
 
 class ApplicantController extends Controller
 {
@@ -21,6 +23,13 @@ class ApplicantController extends Controller
 
 
     public function employ(Applicant $applicant){
-        dd($applicant);
+        $applicant->user->role_id = Role::EMPLOYEE;
+        $applicant->user->save();
+
+        return redirect('applicant/index')->with('status', $applicant->user->name.' is hired');
+
+
     }
+
 }
+

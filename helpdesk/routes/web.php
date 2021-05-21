@@ -26,6 +26,18 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/applicants', [ApplicantController::class, 'index'])
-            ->name('applicants')
+Route::get('/applicant/index', [ApplicantController::class, 'index'])
+            ->name('applicant.index')
             ->middleware('can:list, App\Models\Applicant');
+
+
+            
+Route::put('/applicant/{applicant}/employ', [ApplicantController::class, 'employ'])
+->middleware('auth')
+->name('applicant.employ')
+->middleware('can:employ,applicant');
+
+
+
+
+

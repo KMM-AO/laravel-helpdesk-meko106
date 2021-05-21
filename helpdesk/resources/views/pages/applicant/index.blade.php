@@ -3,6 +3,7 @@
         <h2 font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Applicants') }}
         </h2>
+
     </x-slot>
 
     <div class="py-12">
@@ -10,6 +11,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     Hier komt een tabel met sollicitanten 
+                    <br>
+
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
+
                     <br>
                     @if( $applicants->isEmpty() )
                     Currently no applications...
@@ -19,6 +24,7 @@
                     <td class="title">Name</td>
                     <td class="title" >E-mail</td>
                     <td class="title">Date</td>
+                    <td class="title" >employee</td>
                     </tr>
                     <br>
                     @foreach($applicants as $applicant)
@@ -33,6 +39,15 @@
 
 
                     <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
+
+                    <td><form action= "{{ route('applicant.employ', ['applicant' => $applicant]) }} "
+                    method="POST" class="inline-flex">
+                    @csrf
+                    @method('PUT')<button class="text-green-500">
+                    <i class="far fa-smile"></i>
+                    </button>
+                    </form>
+                    
                     </tr>
                     <br>
 
@@ -53,5 +68,4 @@
     line-height: 1.25;
     }
 
-    
 </style>
