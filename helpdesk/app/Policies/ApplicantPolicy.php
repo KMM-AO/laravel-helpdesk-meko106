@@ -30,6 +30,19 @@ class ApplicantPolicy
     public function employ(User $auth_user, Applicant $applicant){
         return $auth_user->role_id == Role::BOSS && $applicant->user->role_id == Role::APPLICANT;
     }
+
+    public function reject(User $auth_user, Applicant $applicant){
+        return $auth_user->role_id == Role::BOSS && $applicant->user->role_id == Role::APPLICANT;
+    }
+
+    public function queue(User $auth_user, Applicant $applicant){
+        return $auth_user->role_id == Role::BOSS &&
+        $applicant->user->role_id == Role::APPLICANT &&
+        $applicant->queued === false ;
+    }
+
+
+
 }
 
 

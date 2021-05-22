@@ -27,15 +27,26 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/applicant/index', [ApplicantController::class, 'index'])
-            ->name('applicant.index')
-            ->middleware('can:list, App\Models\Applicant');
-
+->name('applicant.index')
+->middleware('can:list, App\Models\Applicant');
 
             
 Route::put('/applicant/{applicant}/employ', [ApplicantController::class, 'employ'])
 ->middleware('auth')
 ->name('applicant.employ')
 ->middleware('can:employ,applicant');
+
+
+Route::delete('/applicant/{applicant}/reject', [ApplicantController::class, 'reject'])
+->middleware('auth')
+->name('applicant.reject')
+->middleware('can:reject,applicant');
+
+
+Route::put('/applicant/{applicant}/queue', [ApplicantController::class, 'queue'])
+->middleware('auth')
+->name('applicant.queue')
+->middleware('can:queue,applicant');
 
 
 

@@ -37,17 +37,45 @@
                     </x-link>
                     </td>
 
-
                     <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
+                    <td>
 
-                    <td><form action= "{{ route('applicant.employ', ['applicant' => $applicant]) }} "
+
+                    @can('employ', $applicant)
+                    <form action= "{{ route('applicant.employ', ['applicant' => $applicant]) }} "
                     method="POST" class="inline-flex">
                     @csrf
                     @method('PUT')<button class="text-green-500">
                     <i class="far fa-smile"></i>
                     </button>
                     </form>
+                    @endcan
+
+
+                    @can('queue', $applicant)
+                    <form action= "{{ route('applicant.queue', ['applicant' => $applicant]) }} "
+                    method="POST" class="inline-flex">
+                    @csrf
+                    @method('PUT')
+                    <button class="text-yellow-500" disabled>
+                    <i class="far fa-meh-blank"></i>
+                    </button>
+                    </form>
+                    @endcan
+
+
+                    @can('reject', $applicant)
+                    <form action= "{{ route('applicant.reject', ['applicant' => $applicant]) }} "
+                    method="POST" class="inline-flex">
+                    @csrf
+                    @method('DELETE')<button class="text-red-500">
+                    <i class="far fa-frown"></i>
+                    </button>
+                    </form>
+                    @endcan
                     
+
+                    </td>
                     </tr>
                     <br>
 
