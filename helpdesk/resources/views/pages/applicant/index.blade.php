@@ -57,7 +57,7 @@
                     method="POST" class="inline-flex">
                     @csrf
                     @method('PUT')
-                    <button class="text-yellow-500" disabled>
+                    <button class="text-yellow-500">
                     <i class="far fa-meh-blank"></i>
                     </button>
                     </form>
