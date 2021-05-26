@@ -13,35 +13,29 @@
                 <form method="POST" action="{{route('ticket.store') }}">
                  @csrf
 
-            <!-- Name -->
-            <!-- <div>
-                <x-label for="name" :value="__('Name')" />
-            
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div> -->
+            <!-- Subject -->
+            <div>
+                <x-label for="name" :value="__('Subject')" />
+                <x-input id="name" class="block mt-4 w-full" type="text" name="Subject" autofocus />
+            </div>
 
-            <!-- Email Address -->
-            <!-- <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div> -->
+            <!-- Contents -->
+            <div>
+                <x-label for="name" :value="__('Contents')" />
+                <x-textarea id="name" class="block mt-4 w-full" name="Contents" >{{ old('contents')}} </x-textarea>
+            </div>
 
-            <!-- Password -->
-            <!-- <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div> -->
+            <!-- category -->
+            <div>
+                <x-label for="name" :value="__('Select')" />
+                <x-select id="name" class="block mt-4 w-full" name="category_id" size="{{ $categories->count() }}" >
+                @foreach ( $categories as $category )
+                <option value="{{$category->id}}" {{ $category->id == old('category_id') ? 'selected' : '' }} > {{$category->name}}  </option>
+                @endforeach
+                </x-select>
+            </div>
 
 
-            <!-- Confirm Password -->
-            <!-- <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                type="password"
-                name="password_confirmation" required />
-            </div> -->
-
-            
             <!-- Apply (or not) -->
             <!-- <div class="block mt-4">
                 <label for="apply" class="inline-flex items-center">
