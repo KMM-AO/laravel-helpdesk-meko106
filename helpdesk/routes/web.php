@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\TicketController;
 
 
 /*
@@ -33,21 +34,32 @@ Route::get('/applicant/index', [ApplicantController::class, 'index'])
             
 Route::put('/applicant/{applicant}/employ', [ApplicantController::class, 'employ'])
 ->middleware('auth')
-->name('applicant.employ')
-->middleware('can:employ,applicant');
+->middleware('can:employ,applicant')
+->name('applicant.employ');
 
 
 Route::delete('/applicant/{applicant}/reject', [ApplicantController::class, 'reject'])
 ->middleware('auth')
-->name('applicant.reject')
-->middleware('can:reject,applicant');
+->middleware('can:reject,applicant')
+->name('applicant.reject');
 
 
 Route::put('/applicant/{applicant}/queue', [ApplicantController::class, 'queue'])
 ->middleware('auth')
-->name('applicant.queue')
-->middleware('can:queue,applicant');
+->middleware('can:queue,applicant')
+->name('applicant.queue');
 
+
+Route::get('/ticket/create', [TicketController::class, 'create'])
+->middleware('auth')
+->middleware('can:create, App\Models\Ticket')
+->name('ticket.create');
+
+
+Route::post('/ticket', [TicketController::class, 'store'])
+->middleware('auth')
+->middleware('can:create, App\Models\Ticket')
+->name('ticket.store');
 
 
 

@@ -25,6 +25,14 @@
                 </div>
                 @endcan
 
+                @can('create', App\Models\Ticket::class)
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link class="dashboardItems" :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
+                        {{ __('Create Ticket') }}
+                    </x-nav-link>
+                </div>
+                @endcan
+
 
 
             </div>
