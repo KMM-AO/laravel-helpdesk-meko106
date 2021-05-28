@@ -15,22 +15,22 @@
 
             <!-- Subject -->
             <div>
-                <x-label for="name" :value="__('Subject')" />
-                <x-input id="name" class="block mt-4 w-full" type="text" name="Subject" autofocus />
+            Subject<x-errored-label for="subject" :value="__('Subject')" :field="'subject'" />
+                <x-input id="subject" class="block mt-4 w-full" type="text" name="subject" />
             </div>
 
             <!-- Contents -->
             <div>
-                <x-label for="name" :value="__('Contents')" />
-                <x-textarea id="name" class="block mt-4 w-full" name="Contents" >{{ old('contents')}} </x-textarea>
+            Contents<x-errored-label for="contents" :value="__('Contents')" :field="'contents'" />
+                <x-textarea id="contents" class="block mt-4 w-full" name="contents" >{{ old('contents')}} </x-textarea>
             </div>
 
             <!-- category -->
             <div>
-                <x-label for="name" :value="__('Select')" />
-                <x-select id="name" class="block mt-4 w-full" name="category_id" size="{{ $categories->count() }}" >
+            Category<x-errored-label for="category" :value="__('Select')" :field="'category'" />
+                <x-select id="category" class="block mt-4 w-full" name="category" size="{{ $categories->count() }}" >
                 @foreach ( $categories as $category )
-                <option value="{{$category->id}}" {{ $category->id == old('category_id') ? 'selected' : '' }} > {{$category->name}}  </option>
+                <option value="{{$category->id}}" {{ $category->id == old('category') ? 'selected' : '' }} > {{$category->name}}  </option>
                 @endforeach
                 </x-select>
             </div>

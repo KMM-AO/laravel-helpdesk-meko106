@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Models\Role;
 use App\Models\Applicant;
+use App\Models\Ticket;
 
 
 class User extends Authenticatable
@@ -48,6 +49,11 @@ class User extends Authenticatable
 
     public function applicant(){
         return $this->hasOne(Applicant::class);
+    }
+
+    public function created_tickets(){        
+        return $this->hasMany(Ticket::class, 'customer_user_id', 'id');
+
     }
 
 
