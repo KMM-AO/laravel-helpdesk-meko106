@@ -40,6 +40,5 @@ class ApplicantController extends Controller
         return back()->with('status', $applicant->user->name .' is queued');   
     }
     
-
 }
 

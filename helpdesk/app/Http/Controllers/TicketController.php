@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Ticket;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TicketController extends Controller
@@ -31,7 +33,20 @@ class TicketController extends Controller
 
         
         return redirect('/dashboard')->with('status', 'Your ticket is saved!');
+    }
 
+
+    public function index($status){
+
+        $tickets=Ticket::all();
+        
+        $data=[
+            'status' => $status." ticket",
+            'tickets' =>  $tickets
+        ];
+
+        
+        return view('pages.ticket.index')->with('data',$data) ;
     }
 
     
