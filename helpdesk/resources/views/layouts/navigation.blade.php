@@ -52,7 +52,6 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <form>
                             @csrf
                             @foreach(['open', 'waiting', 'processed', 'closed'] as $status)
                             @can('click_list', [App\Models\Ticket::class, $status] )
@@ -61,7 +60,6 @@
                             </x-dropdown-link>
                             @endcan
                             @endforeach
-                        </form>
                     </x-slot>
                 </x-dropdown>
             </div>

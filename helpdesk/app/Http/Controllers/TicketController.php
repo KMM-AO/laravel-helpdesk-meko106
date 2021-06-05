@@ -29,7 +29,7 @@ class TicketController extends Controller
         $ticket->contents=$request->contents;
         $ticket->category_id=$request->category;
         $request->user()->created_tickets()->save($ticket);
-
+        
         
         return redirect('/dashboard')->with('status', 'Your ticket is saved!');
     }
@@ -38,12 +38,6 @@ class TicketController extends Controller
     public function index($status){
 
         $tickets=Ticket::all();
-        
-        // $data=[
-        //     'status' => $status." ticket",
-        //     'tickets' =>  $tickets
-        // ];
-
         
         return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
     }
