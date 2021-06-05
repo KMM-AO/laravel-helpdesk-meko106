@@ -1,5 +1,6 @@
+@props(['value' ,'field'])
+
+{{ $value }}
 @error($field)
-<span class="text-red-500">
-{{ $message }}
-</span>
+<span class="text-red-500">{{ $message }}</span>
 @enderror

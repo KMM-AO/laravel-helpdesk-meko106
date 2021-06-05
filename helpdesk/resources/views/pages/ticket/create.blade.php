@@ -15,23 +15,23 @@
 
             <!-- Subject -->
             <div>
-            Subject<x-errored-label for="subject" :value="__('Subject')" :field="'subject'" />
-                <x-input id="subject" class="block mt-4 w-full" type="text" name="subject" />
+                <x-errored-label for="subject" :value="__('Subject')" :field="'subject'" />
+                <x-input id="subject" class="block mt-4 w-full" type="text" name="subject" :value="old('subject')" />
             </div>
 
             <!-- Contents -->
             <div>
-            Contents<x-errored-label for="contents" :value="__('Contents')" :field="'contents'" />
+                <x-errored-label for="contents" :value="__('Contents')" :field="'contents'" />
                 <x-textarea id="contents" class="block mt-4 w-full" name="contents" >{{ old('contents')}} </x-textarea>
             </div>
 
             <!-- category -->
             <div>
-            Category<x-errored-label for="category" :value="__('Select')" :field="'category'" />
-                <x-select id="category" class="block mt-4 w-full" name="category" size="{{ $categories->count() }}" >
-                @foreach ( $categories as $category )
-                <option value="{{$category->id}}" {{ $category->id == old('category') ? 'selected' : '' }} > {{$category->name}}  </option>
-                @endforeach
+                <x-errored-label for="category" :value="__('Category')" :field="'category'" />
+                    <x-select id="category" class="block mt-4 w-full" name="category" size="{{ $categories->count() }}" >
+                    @foreach ( $categories as $category )
+                    <option value="{{$category->id}}" {{ $category->id == old('category') ? 'selected' : '' }} > {{$category->name}}  </option>
+                    @endforeach
                 </x-select>
             </div>
 
