@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($data['status']) }}
+            {{ __( $status ) }}
         </h2>
 
     </x-slot>
@@ -13,20 +13,23 @@
 
                     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                    @if( $data['tickets']->isEmpty() )
+                    @if( $tickets->isEmpty() )
                     Currently no tickets...
                     @else
                     <table style="width:80%" >
                     <tr>
                     <td class="title">Subject</td>
                     </tr>
-                    @foreach($data['tickets'] as $ticket)
+                    @foreach($tickets as $ticket)
                     <tr>
                     <td>{{ $ticket->subject }}</td>
                     
                     </tr>
 
                     @endforeach
+
+                    </table>
+                    
                     @endif
                     
                 </div>

@@ -62,9 +62,9 @@ Route::post('/ticket', [TicketController::class, 'store'])
 ->name('ticket.store');
 
 
-Route::get('/ticket/index/{status}', [TicketController::class, 'index'], function ($status){
+Route::get('/ticket/index/{status}', [TicketController::class, 'index'] )
 
-})->where('status', 'open|closed|processed|waiting')
+->where('status', 'open|closed|processed|waiting')
 ->middleware('auth')
 ->middleware('can:list, App\Models\Ticket')
 ->name('ticket.index');

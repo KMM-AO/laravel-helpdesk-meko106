@@ -39,13 +39,13 @@ class TicketController extends Controller
 
         $tickets=Ticket::all();
         
-        $data=[
-            'status' => $status." ticket",
-            'tickets' =>  $tickets
-        ];
+        // $data=[
+        //     'status' => $status." ticket",
+        //     'tickets' =>  $tickets
+        // ];
 
         
-        return view('pages.ticket.index')->with('data',$data) ;
+        return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
     }
 
     
