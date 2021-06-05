@@ -15,7 +15,7 @@ class CreateTicketEmployeeUserTable extends Migration
     {
         Schema::create('ticket_employee_user', function (Blueprint $table) {
             $table->primary( ['ticket_id', 'employee_user_id'] );
-
+            
             
             $table->foreignId('ticket_id')->constrained('tickets')
             ->onUpdate('cascade')

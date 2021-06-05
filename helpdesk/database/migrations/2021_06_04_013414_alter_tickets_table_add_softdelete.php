@@ -26,7 +26,7 @@ class AlterTicketsTableAddSoftdelete extends Migration
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 }

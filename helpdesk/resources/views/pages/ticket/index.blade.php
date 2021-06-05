@@ -20,13 +20,11 @@
                     <tr>
                     <td class="title">Subject</td>
                     </tr>
-                    <br>
                     @foreach($data['tickets'] as $ticket)
                     <tr>
                     <td>{{ $ticket->subject }}</td>
                     
                     </tr>
-                    <br>
 
                     @endforeach
                     @endif

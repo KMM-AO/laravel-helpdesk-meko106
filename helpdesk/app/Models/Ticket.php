@@ -11,5 +11,5 @@ class Ticket extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    
 }
