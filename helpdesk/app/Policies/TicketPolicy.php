@@ -28,7 +28,9 @@ class TicketPolicy
 
 
         public function list(User $auth_user){
+
             return $auth_user->role_id==Role::APPLICANT ? false :true;
+        
         }
 
 
