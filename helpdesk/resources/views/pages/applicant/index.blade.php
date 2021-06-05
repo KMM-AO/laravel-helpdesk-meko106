@@ -23,7 +23,7 @@
                     <td class="title">Date</td>
                     <td class="title" >employee</td>
                     </tr>
-                    <br>
+                    
                     @foreach($applicants as $applicant)
                     <tr>
                     <td>{{ $applicant->user->name }}</td>
@@ -74,7 +74,6 @@
 
                     </td>
                     </tr>
-                    <br>
 
                     @endforeach
                     @endif
