@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Ticket;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+
+
+
 
 
 
@@ -35,13 +41,75 @@ class TicketController extends Controller
     }
 
 
-    public function index($status){
+    public function index(Request $request, $status){
 
-        $tickets=Ticket::all();
-        
+        $user = $request->user();
+        switch($status){
+            case 'open':
+                switch($user->role_id){
+                    case Role::BOSS:
+                    case Role::EMPLOYEE:
+                        //q 1
+                        $tickets=Ticket::all();
+                        break;
+                    case Role::CUSTOMER:
+                        //q3
+                        $tickets=Ticket::has('users')->where('customer_user_id','=', $user->id)->get();
+                        break;
+                    }
+                break;        
+            case 'waiting':
+                switch($user->role_id){
+                    case Role::BOSS:
+                    case Role::EMPLOYEE:
+                        //q 8
+                        $tickets=Ticket::doesntHave('proccessing_user')->get();
+                        break;
+                    case Role::CUSTOMER:
+                        // q 10
+                        $tickets=Ticket::has('users')->doesntHave('proccessing_user')->where('customer_user_id','=', $user->id)->get();
+                        break;
+                }
+                break;
+            case 'processed':
+                switch ($user->role_id){
+                    case Role::BOSS:
+                        // q 7
+                        $tickets=Ticket::has('proccessing_user')->get();
+                        break;
+                    case Role::EMPLOYEE:
+                        // q 5
+                        $tickets= $user->processed_tickets()->get();
+                        break;
+                    case Role::CUSTOMER:
+                        // q 9
+                        $tickets=Ticket::has('proccessing_user')->where('customer_user_id','=', $user->id) ->get();
+                        break;
+                }
+                break;
+            case 'closed':
+                switch($user->role_id){
+                    case Role::BOSS:
+                        // q 2
+                        $tickets=Ticket::onlyTrashed()->get();
+                        break;
+                    case Role::EMPLOYEE:
+                        // q 6
+                        $tickets=$user->processed_tickets()->onlyTrashed()->get();
+                        break;
+                    case Role::CUSTOMER:
+                        // q 4
+                        $tickets=Ticket::has('users')->onlyTrashed()->where('customer_user_id','=', $user->id)->get();
+                        break;
+                }
+                break;
+            };
+
+
         return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
+
     }
 
-    
+
 
 }

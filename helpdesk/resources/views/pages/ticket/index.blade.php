@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
                     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+                    
                     @if( $tickets->isEmpty() )
                     Currently no tickets...
                     @else
