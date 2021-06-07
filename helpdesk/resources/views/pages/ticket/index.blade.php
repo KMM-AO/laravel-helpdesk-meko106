@@ -21,7 +21,7 @@
                     <tr>
                     
                     <td class="title"> date </td>
-                    @if(Auth::user()->role->name != "klant")<td class="title"> customer </td>@endif
+                    @if(Auth::user()->role->name != 'klant')<td class="title"> customer </td>@endif
                     <td class="title"> subject </td>
                     <td class="title"> category </td>
                     <td class="title"> status </td>
@@ -36,7 +36,7 @@
 
                     <td>{{ date_format( $ticket->created_at, 'd-m-Y') }}</td>
 
-                    @if(Auth::user()->role->name != "klant")<td>{{ $ticket->creating_user->name }}</td>@endif
+                    @if(Auth::user()->role->name != 'klant')<td>{{ $ticket->creating_user->name }}</td>@endif
                     <td>{{ $ticket->subject }}</td>
                     <td>{{ $ticket->category->name }}</td>
                     <td>{{ $ticket->status() }}</td>
