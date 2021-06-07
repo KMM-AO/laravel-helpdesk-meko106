@@ -51,8 +51,6 @@ class User extends Authenticatable
         return $this->hasOne(Applicant::class);
     }
 
-
-
     public function created_tickets(){        
         return $this->belongsToMany(Ticket::class,'ticket_employee_user','employee_user_id','ticket_id');
     }

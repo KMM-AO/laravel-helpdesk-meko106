@@ -63,11 +63,11 @@ class TicketController extends Controller
                     case Role::BOSS:
                     case Role::EMPLOYEE:
                         //q 8
-                        $tickets=Ticket::doesntHave('proccessing_user')->get();
+                        $tickets=Ticket::doesntHave('proccessing_users')->get();
                         break;
                     case Role::CUSTOMER:
                         // q 10
-                        $tickets=Ticket::has('users')->doesntHave('proccessing_user')->where('customer_user_id','=', $user->id)->get();
+                        $tickets=Ticket::has('users')->doesntHave('proccessing_users')->where('customer_user_id','=', $user->id)->get();
                         break;
                 }
                 break;
@@ -75,7 +75,7 @@ class TicketController extends Controller
                 switch ($user->role_id){
                     case Role::BOSS:
                         // q 7
-                        $tickets=Ticket::has('proccessing_user')->get();
+                        $tickets=Ticket::has('proccessing_users')->get();
                         break;
                     case Role::EMPLOYEE:
                         // q 5
@@ -83,7 +83,7 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         // q 9
-                        $tickets=Ticket::has('proccessing_user')->where('customer_user_id','=', $user->id) ->get();
+                        $tickets=Ticket::has('proccessing_users')->where('customer_user_id','=', $user->id) ->get();
                         break;
                 }
                 break;
@@ -104,7 +104,6 @@ class TicketController extends Controller
                 }
                 break;
             };
-
 
         return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
 

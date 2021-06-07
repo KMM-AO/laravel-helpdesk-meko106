@@ -28,9 +28,7 @@ class TicketPolicy
 
 
         public function list(User $auth_user){
-
             return $auth_user->role_id==Role::APPLICANT ? false :true;
-        
         }
 
 
@@ -43,6 +41,11 @@ class TicketPolicy
                     return in_array($status, ['open', 'closed']);
                 default: return false;
             }
+        }
+
+
+        public function read_employee_names(User $auth_user){
+            return $auth_user->role_id == Role::CUSTOMER  ? false :true; 
         }
 
 }

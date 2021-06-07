@@ -9,7 +9,4 @@ class Category extends Model
 {
     use HasFactory;
 
-
-    const Cat="dfdsf";
-    const Cast="dskfjdslfjdsl";
 }
