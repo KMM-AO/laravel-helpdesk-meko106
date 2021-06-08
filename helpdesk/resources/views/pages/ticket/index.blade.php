@@ -37,7 +37,13 @@
                     <td>{{ date_format( $ticket->created_at, 'd-m-Y') }}</td>
 
                     @if(Auth::user()->role->name != "klant")<td>{{ $ticket->creating_user->name }}</td>@endif
-                    <td>{{ $ticket->subject }}</td>
+
+                    <td>
+                    <x-link href="{{ route('ticket.show', $ticket->id) }}">
+                    {{ $ticket->subject }}
+                    </x-link>
+                    </td>
+                    
                     <td>{{ $ticket->category->name }}</td>
                     <td>{{ $ticket->status() }}</td>
                     

@@ -54,7 +54,7 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         //q3
-                        $tickets=Ticket::has('users')->where('customer_user_id','=', $user->id)->get();
+                        $tickets=$user->created_tickets()->get();
                         break;
                     }
                 break;        
@@ -67,7 +67,7 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         // q 10
-                        $tickets=Ticket::has('users')->doesntHave('proccessing_users')->where('customer_user_id','=', $user->id)->get();
+                        $tickets=$user->created_tickets()->doesntHave('proccessing_users')->get();
                         break;
                 }
                 break;
@@ -79,11 +79,11 @@ class TicketController extends Controller
                         break;
                     case Role::EMPLOYEE:
                         // q 5
-                        $tickets= $user->processed_tickets()->get();
+                        $tickets= $user->processed_tickets;
                         break;
                     case Role::CUSTOMER:
                         // q 9
-                        $tickets=Ticket::has('proccessing_users')->where('customer_user_id','=', $user->id) ->get();
+                        $tickets=$user->created_tickets()->has('proccessing_users')->get();
                         break;
                 }
                 break;
@@ -99,15 +99,16 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         // q 4
-                        $tickets=Ticket::has('users')->onlyTrashed()->where('customer_user_id','=', $user->id)->get();
+                        $tickets=$user->created_tickets()->onlyTrashed()->get();
                         break;
                 }
                 break;
             };
 
         return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
-
     }
+
+
 
 
 

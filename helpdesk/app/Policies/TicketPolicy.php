@@ -48,4 +48,6 @@ class TicketPolicy
             return $auth_user->role_id == Role::CUSTOMER  ? false :true; 
         }
 
-}
+
+
+    }

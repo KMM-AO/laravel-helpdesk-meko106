@@ -52,13 +52,17 @@ class User extends Authenticatable
     }
 
     public function created_tickets(){        
-        return $this->belongsToMany(Ticket::class,'ticket_employee_user','employee_user_id','ticket_id');
+        return $this->hasMany(Ticket::class,'customer_user_id','id');
     }
     
     public function processed_tickets(){
         return $this->belongsToMany(Ticket::class,'ticket_employee_user','employee_user_id','ticket_id');
     }
 
+    
 
 
+
+
+    
 }
