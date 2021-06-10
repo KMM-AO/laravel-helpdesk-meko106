@@ -36,7 +36,7 @@
 
                     <td>{{ date_format( $ticket->created_at, 'd-m-Y') }}</td>
 
-                    @if(Auth::user()->role->id !=App\Models\Role::CUSTOMER)<td>{{ $ticket->creating_user->name }}</td>@endif
+                    @if(Auth::user()->role->id != App\Models\Role::CUSTOMER)<td>{{ $ticket->creating_user->name }}</td>@endif
 
                     <td>
                     <x-link href="{{ route('ticket.show', $ticket->id) }}">
