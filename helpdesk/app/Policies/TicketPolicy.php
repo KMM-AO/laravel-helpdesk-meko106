@@ -29,8 +29,7 @@ class TicketPolicy
 
         public function list(User $auth_user){
             $allowed_role_id=[11,21,41];
-
-            return in_array($auth_user->role_id,$allowed_role_id) ? true : false;
+            return in_array($auth_user->role_id, $allowed_role_id) ? true : false;
         }
 
 
@@ -49,7 +48,8 @@ class TicketPolicy
 
 
         public function read_employee_names(User $auth_user){
-            return $auth_user->role_id == Role::CUSTOMER  ? false :true; 
+            $allowed_role_id=[11,21];
+            return in_array($auth_user->role_id, $allowed_role_id) ? true :false;
         }
 
 
