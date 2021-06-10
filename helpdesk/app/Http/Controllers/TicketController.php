@@ -54,7 +54,7 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         //q3
-                        $tickets=$user->created_tickets()->get();
+                        $tickets=$user->created_tickets;
                         break;
                     }
                 break;        
