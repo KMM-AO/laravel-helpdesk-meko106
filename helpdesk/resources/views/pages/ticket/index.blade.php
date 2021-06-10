@@ -19,10 +19,10 @@
 
                     <table style="width:80%" >
                     <tr>
-                     
+                    
                     <td class="title"> date </td>
                     <!-- dit heb ik via het internet gevonden(alias), we hadden ook de hele path kunnen schrijven -->
-                    @if(Auth::user()->role->id != App\Models\Role::CUSTOMER )<td class="title"> customer </td>@endif
+                    @if(Auth::user()->role->id != Role::CUSTOMER )<td class="title"> customer </td>@endif
                     <td class="title"> subject  </td>
                     <td class="title"> category </td>
                     <td class="title"> status </td>
@@ -37,7 +37,7 @@
 
                     <td>{{ date_format( $ticket->created_at, 'd-m-Y') }}</td>
 
-                    @if(Auth::user()->role->name != App\Models\Role::CUSTOMER )<td>{{ $ticket->creating_user->name }}</td>@endif
+                    @if(Auth::user()->role->name != Role::CUSTOMER)<td>{{ $ticket->creating_user->name }}</td>@endif
 
                     <td>
                     <x-link href="{{ route('ticket.show', $ticket->id) }}">
