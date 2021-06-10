@@ -28,8 +28,12 @@ class TicketPolicy
 
 
         public function list(User $auth_user){
-            return $auth_user->role_id==Role::APPLICANT ? false :true;
+            $allowed_role_id=[11,21,41];
+
+            return in_array($auth_user->role_id,$allowed_role_id) ? true : false;
         }
+
+
 
 
         public function click_list($auth_user, $status){
@@ -49,5 +53,10 @@ class TicketPolicy
         }
 
 
+        public function read(User $auth_user){
+            return $auth_user->role_id == Role::BOSS || 
+            $auth_user->role_id == Role::EMPLOYEE ;
+            
+        }
 
     }

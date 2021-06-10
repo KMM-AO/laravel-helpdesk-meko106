@@ -69,7 +69,10 @@ Route::get('/ticket/index/{status}', [TicketController::class, 'index'] )
 ->name('ticket.index');
 
 
-
+// Route::get('/ticket/{ticket}', [TicketController::class, 'show'])
+// ->middleware('auth')
+// ->middleware('can:read, App\Models\Ticket')
+// ->name('ticket.show');
 
 
 
