@@ -109,6 +109,11 @@ class TicketController extends Controller
     }
 
 
+    public function show(){
+        return true;
+    }
+
+
 
 
 
