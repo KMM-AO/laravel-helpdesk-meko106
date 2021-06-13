@@ -29,7 +29,7 @@ class TicketPolicy
 
         public function list(User $auth_user){
             $allowed_role_id=[Role::BOSS, Role::EMPLOYEE, Role::CUSTOMER];
-            return in_array($auth_user->role_id, $allowed_role_id) ? true : false;
+            return in_array($auth_user->role_id, $allowed_role_id) ;
         }
 
 
