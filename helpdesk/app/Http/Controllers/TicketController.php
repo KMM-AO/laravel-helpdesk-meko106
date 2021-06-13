@@ -67,7 +67,7 @@ class TicketController extends Controller
                         break;
                     case Role::CUSTOMER:
                         // q 10
-                        $tickets=$user->created_tickets()->doesntHave('proccessing_users')->get();                        return $tickets;
+                        $tickets=$user->created_tickets()->doesntHave('proccessing_users')->get();             
                         break;
                 }
                 break;
@@ -107,7 +107,6 @@ class TicketController extends Controller
 
         return view('pages.ticket.index')->with('status', $status.' ticket')->with('tickets',$tickets) ;
     }
-
 
 
 
