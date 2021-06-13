@@ -48,8 +48,8 @@ class TicketPolicy
 
 
         public function read_employee_names(User $auth_user){
-            $allowed_role_id=[11,21];
-            return in_array($auth_user->role_id, $allowed_role_id) ? true :false;
+            $allowed_role_id=[Role::BOSS, Role::EMPLOYEE];
+            return in_array($auth_user->role_id, $allowed_role_id);
         }
 
 
@@ -58,5 +58,4 @@ class TicketPolicy
             $auth_user->role_id == Role::EMPLOYEE ;
             
         }
-
     }
