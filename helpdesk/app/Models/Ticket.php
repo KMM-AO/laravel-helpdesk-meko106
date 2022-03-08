@@ -16,9 +16,6 @@ class Ticket extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function users(){
-        return $this->belongsTo(User::class,'customer_user_id', 'id');
-    }
 
 
     public function proccessing_users(){

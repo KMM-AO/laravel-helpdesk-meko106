@@ -17,12 +17,10 @@
                     <table style="width:80%" >
                     <tr><td class="title"> subject  </td></tr>
 
-                    @can('read', $ticket)
                     <tr>
                     <td>
                     {{ $ticket->subject }}
                     </td>
-                    @endcan
             
                     
                     </tr>

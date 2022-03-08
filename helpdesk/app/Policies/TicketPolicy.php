@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Ticket;
 use App\Models\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -33,8 +34,6 @@ class TicketPolicy
         }
 
 
-
-
         public function click_list($auth_user, $status){
             switch ($auth_user->role_id){
                 case Role::BOSS:
@@ -53,9 +52,10 @@ class TicketPolicy
         }
 
 
-        public function read(User $auth_user){
-            return $auth_user->role_id == Role::BOSS || 
-            $auth_user->role_id == Role::EMPLOYEE ;
-            
+        public function read(User $auth_user, Ticket $ticket){
+        
+            return $auth_user->role_id == Role::BOSS ;
+            $auth_user->role_id == Role::EMPLOYEE ||
+            $auth_user->is($ticket->creating_user) ;
         }
     }

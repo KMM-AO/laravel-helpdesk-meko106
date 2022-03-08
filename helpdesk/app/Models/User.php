@@ -59,10 +59,5 @@ class User extends Authenticatable
         return $this->belongsToMany(Ticket::class,'ticket_employee_user','employee_user_id','ticket_id');
     }
 
-    
 
-
-
-
-    
 }

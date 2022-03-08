@@ -50,11 +50,11 @@ class TicketController extends Controller
                     case Role::BOSS:
                     case Role::EMPLOYEE:
                         //q 1
-                        $tickets=Ticket::all();
+                        $tickets=Ticket::all();     
                         break;
                     case Role::CUSTOMER:
                         //q3
-                        $tickets=$user->created_tickets()->orderBy('created_at', 'desc')->get(); 
+                        $tickets=$user->created_tickets()->orderBy('created_at', 'desc')->get();
                         break;
                     }
                 break;        
@@ -63,11 +63,11 @@ class TicketController extends Controller
                     case Role::BOSS:
                     case Role::EMPLOYEE:
                         //q 8
-                        $tickets=Ticket::doesntHave('proccessing_users')->orderBy('created_at', 'asc')->get();
+                        $tickets=Ticket::doesntHave('proccessing_users')->orderBy('created_at', 'asc')->get();           
                         break;
                     case Role::CUSTOMER:
                         // q 10
-                        $tickets=$user->created_tickets()->doesntHave('proccessing_users')->get();             
+                        $tickets=$user->created_tickets()->doesntHave('proccessing_users')->get(); 
                         break;
                 }
                 break;
@@ -75,11 +75,11 @@ class TicketController extends Controller
                 switch ($user->role_id){
                     case Role::BOSS:
                         // q 7
-                        $tickets=Ticket::has('proccessing_users')->orderBy('created_at', 'desc')->get();
+                        $tickets=Ticket::has('proccessing_users')->orderBy('created_at', 'desc')->get(); 
                         break;
                     case Role::EMPLOYEE:
                         // q 5
-                        $tickets= $user->processed_tickets()->orderBy('created_at', 'desc')->get();            
+                        $tickets= $user->processed_tickets()->orderBy('created_at', 'desc')->get();        
                         break;
                     case Role::CUSTOMER:
                         // q 9
@@ -91,15 +91,15 @@ class TicketController extends Controller
                 switch($user->role_id){
                     case Role::BOSS:
                         // q 2
-                        $tickets=Ticket::onlyTrashed()->orderBy('created_at', 'desc')->get();               
+                        $tickets=Ticket::onlyTrashed()->orderBy('created_at', 'desc')->get();           
                         break;
                     case Role::EMPLOYEE:
                         // q 6
-                        $tickets=$user->processed_tickets()->onlyTrashed()->orderBy('created_at', 'desc')->get();
+                        $tickets=$user->processed_tickets()->onlyTrashed()->orderBy('created_at', 'desc')->get(); 
                         break;
                     case Role::CUSTOMER:
                         // q 4
-                        $tickets=$user->created_tickets()->onlyTrashed()->orderBy('created_at', 'desc')->get(); 
+                        $tickets=$user->created_tickets()->onlyTrashed()->orderBy('created_at', 'desc')->get();   
                         break;
                 }
                 break;
@@ -109,6 +109,10 @@ class TicketController extends Controller
     }
 
 
+    public function show(Ticket $ticket){
+        return view('pages.ticket.show')->with('ticket', $ticket);
+    }
 
+    
 
 }
